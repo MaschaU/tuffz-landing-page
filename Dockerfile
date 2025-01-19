@@ -1,6 +1,6 @@
 ## BUILD STAGE
 
-FROM node:alpine as build
+FROM node:22.13.0-alpine3.21 as build
 
 WORKDIR /usr/src/app
 
@@ -14,7 +14,7 @@ RUN npm run build
 
 ## UP NGINX STAGE
 
-FROM nginx:alpine
+FROM nginx:1.27.3-alpine3.20
 
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 
